@@ -1,0 +1,13 @@
+@import "@material/react-button/index";
+@import "@material/react-top-app-bar/index";
+@import "@material/react-text-field/index";
+@import "./react-button-overrides";
+@import "./react-top-app-bar-overrides";
+
+body {
+  background-color: #202124;
+}
+
+.wrapper-component {
+  background-color: #fff;
+}

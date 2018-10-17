@@ -1,0 +1,61 @@
+.btn-flex {
+  display: flex;
+
+  .auto {
+    flex: auto;
+    margin-right: 10px;
+  }
+
+  .auto:last-child {
+    margin-right: 0;
+  }
+}
+
+.btn {
+  &-default {
+    @include mdc-button-ink-color(#212529);
+    @include mdc-button-container-fill-color(#dddddd);
+  }
+
+  &-primary {
+    @include mdc-button-ink-color(#fff);
+    @include mdc-button-container-fill-color(#007bff);
+    @include mdc-button-outline-color(#007bff);
+  }
+
+  &-danger {
+    @include mdc-button-ink-color(#fff);
+    @include mdc-button-container-fill-color(#dc3545);
+    @include mdc-button-outline-color(#dc3545);
+  }
+
+  &-warning {
+    @include mdc-button-ink-color(#212529);
+    @include mdc-button-container-fill-color(#ffc107);
+    @include mdc-button-outline-color(#ffc107);
+  }
+
+  &-info {
+    @include mdc-button-ink-color(#fff);
+    @include mdc-button-container-fill-color(#17a2b8);
+    @include mdc-button-outline-color(#17a2b8);
+  }
+
+  &-light {
+    @include mdc-button-ink-color(#212529);
+    @include mdc-button-container-fill-color(#f8f9fa);
+    @include mdc-button-outline-color(#f8f9fa);
+  }
+
+  &-dark {
+    @include mdc-button-ink-color(#fff);
+    @include mdc-button-container-fill-color(#343a40);
+    @include mdc-button-outline-color(#343a40);
+  }
+
+  &-link {
+    font-weight: 400;
+    @include mdc-button-ink-color(#007bff);
+    @include mdc-button-container-fill-color(transparent);
+  }
+}
