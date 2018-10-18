@@ -1,0 +1,21 @@
+{
+  "components": {
+    "commons": {
+      "frame": {
+        "header": {
+          "title": "Chatting"
+        }
+      }
+    },
+    "login": {
+      "field": {
+        "title": "Sign In",
+        "loginid": "LoginId",
+        "loginidHelperText": "Input LoginId",
+        "password": "Password",
+        "passwordHelperText": "Input Password",
+        "signIn": "Sign In"
+      }
+    }
+  }
+}

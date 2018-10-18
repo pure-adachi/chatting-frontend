@@ -1,0 +1,21 @@
+{
+  "components": {
+    "commons": {
+      "frame": {
+        "header": {
+          "title": "Chatting"
+        }
+      }
+    },
+    "login": {
+      "field": {
+        "title": "ログイン",
+        "loginid": "ログインID",
+        "loginidHelperText": "ログインID入力",
+        "password": "パスワード",
+        "passwordHelperText": "パスワード入力",
+        "signIn": "ログイン"
+      }
+    }
+  }
+}
