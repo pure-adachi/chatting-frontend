@@ -2,5 +2,19 @@
   "default": {
     "requiredMark": "*",
     "processing": "処理中..."
+  },
+  "errors": {
+    "unauthorized": "ログイン情報が不正です。",
+    "blank": "を入力して下さい。",
+    "invalid": "は不正な値です。",
+    "taken": "は既に存在します。"
+  },
+  "models": {
+    "attributes": {
+      "user": {
+        "loginid": "ログインID",
+        "password": "パスワード"
+      }
+    }
   }
 }

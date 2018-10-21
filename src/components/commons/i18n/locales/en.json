@@ -2,5 +2,19 @@
   "default": {
     "requiredMark": "*",
     "processing": "Processing..."
+  },
+  "errors": {
+    "unauthorized": "Is Unauthorized",
+    "blank": "is Blank",
+    "invalid": "is Invalid",
+    "taken": "is Taken"
+  },
+  "models": {
+    "attributes": {
+      "user": {
+        "loginid": "LoginId",
+        "password": "Password"
+      }
+    }
   }
 }
