@@ -2,11 +2,6 @@
   "name": "chatting-frontend",
   "version": "0.1.0",
   "private": true,
-  "root": "build/",
-  "clean_urls": false,
-  "routes": {
-    "/**": "index.html"
-  },
   "dependencies": {
     "@material/react-button": "^0.4.2",
     "@material/react-text-field": "^0.5.1",
