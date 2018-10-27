@@ -1,0 +1,7 @@
+.is-invalid {
+  @include mdc-text-field-outline-color(#dc3545);
+  @include mdc-text-field-label-color(#dc3545);
+  @include mdc-text-field-focused-outline-color(#dc3545);
+  @include mdc-text-field-hover-outline-color(#dc3545);
+  @include mdc-text-field-caret-color(#dc3545);
+}

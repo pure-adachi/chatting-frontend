@@ -3,6 +3,8 @@ import { Redirect } from "react-router";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import LoadingOverlay from "react-loading-overlay";
+import { toast } from "react-toastify";
+import { FormattedMessage } from "react-intl";
 import { viewerQuery } from "./viewerQuery";
 
 export default class LoginAuth extends Component {
@@ -24,7 +26,10 @@ export default class LoginAuth extends Component {
         {({ loading, data }) => {
           if (loading)
             return <LoadingOverlay active={true} spinner color="#202124" />;
-          if (!data.viewer) return <Redirect to="/login" />;
+          if (!data.viewer) {
+            toast.error(<FormattedMessage id="errors.notLogin" />);
+            return <Redirect to="/login" />;
+          }
           if (data) return this.props.children;
         }}
       </Query>

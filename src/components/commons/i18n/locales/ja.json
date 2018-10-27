@@ -1,10 +1,12 @@
 {
   "default": {
     "requiredMark": "*",
-    "processing": "処理中..."
+    "processing": "処理中...",
+    "logged": "ログインしました。"
   },
   "errors": {
     "unauthorized": "ログイン情報が不正です。",
+    "notLogin": "ログインしてください。",
     "blank": "を入力して下さい。",
     "invalid": "は不正な値です。",
     "taken": "は既に存在します。"

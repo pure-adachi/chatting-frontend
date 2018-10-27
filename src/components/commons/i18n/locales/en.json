@@ -1,10 +1,12 @@
 {
   "default": {
     "requiredMark": "*",
-    "processing": "Processing..."
+    "processing": "Processing...",
+    "logged": "Logged"
   },
   "errors": {
     "unauthorized": "Is Unauthorized",
+    "notLogin": "Not Login",
     "blank": "is Blank",
     "invalid": "is Invalid",
     "taken": "is Taken"
