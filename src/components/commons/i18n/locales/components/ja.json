@@ -5,6 +5,10 @@
         "header": {
           "title": "Chatting"
         }
+      },
+      "sidemenu": {
+        "frends": "友達",
+        "talks": "トーク"
       }
     },
     "login": {

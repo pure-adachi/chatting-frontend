@@ -33,7 +33,7 @@ export default class Frame extends Component {
       <IntlProvider {...config}>
         <div className="wrapper-component">
           <ToastContainer />
-          <Header />
+          {this.props.header || <Header />}
           {this.props.children}
         </div>
       </IntlProvider>

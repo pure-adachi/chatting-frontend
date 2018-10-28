@@ -1,9 +1,10 @@
 @import "@material/react-button/index";
 @import "@material/react-top-app-bar/index";
+@import "@material/react-material-icon/index";
 @import "@material/react-text-field/index";
 @import "./react-button-overrides";
 @import "./react-top-app-bar-overrides";
-@import "./react-text-field-overrides.scss";
+@import "./react-text-field-overrides";
 
 body {
   background-color: #202124;

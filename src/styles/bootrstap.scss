@@ -1,0 +1,17 @@
+@import "./bootrstap/bootstrap";
+
+.container-fluid {
+  padding-top: 64px;
+}
+
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+  position: absolute;
+  left: 0;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px solid #eee;
+  height: 100%;
+}

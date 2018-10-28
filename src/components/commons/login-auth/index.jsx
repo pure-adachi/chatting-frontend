@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Redirect } from "react-router";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import LoadingOverlay from "react-loading-overlay";
 import { toast } from "react-toastify";
 import { FormattedMessage } from "react-intl";
 import { viewerQuery } from "./viewerQuery";
+import Loading from "../loading";
 
 export default class LoginAuth extends Component {
   render() {
@@ -24,8 +24,7 @@ export default class LoginAuth extends Component {
     return (
       <Query query={gqlQuery} context={context} fetchPolicy="network-only">
         {({ loading, data }) => {
-          if (loading)
-            return <LoadingOverlay active={true} spinner color="#202124" />;
+          if (loading) return <Loading />;
           if (!data.viewer) {
             toast.error(<FormattedMessage id="errors.notLogin" />);
             return <Redirect to="/login" />;

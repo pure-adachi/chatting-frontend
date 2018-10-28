@@ -5,7 +5,6 @@ import gql from "graphql-tag";
 import TextField, { HelperText, Input } from "@material/react-text-field";
 import Button from "@material/react-button";
 import { Redirect } from "react-router";
-import LoadingOverlay from "react-loading-overlay";
 import Loading from "../../commons/loading";
 
 class Field extends Component {
@@ -134,11 +133,7 @@ class Field extends Component {
                       return (
                         <div className="form-signin">
                           <h1 className="h3 mb-3">
-                            <LoadingOverlay
-                              active={mutateLoading}
-                              spinner
-                              color="#202124"
-                            />
+                            <Loading active={mutateLoading} />
                             <FormattedMessage id="components.login.field.title" />
                           </h1>
                           <div>
