@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-import { injectIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import TopAppBar from "@material/react-top-app-bar";
 
-class Header extends Component {
+export default class Header extends Component {
   render() {
     return (
-      <TopAppBar
-        className="login-top-bar"
-        title={this.props.intl.formatMessage({
-          id: "components.commons.frame.header.title"
-        })}
-      />
+      <FormattedMessage id="components.commons.frame.header.title">
+        {title => <TopAppBar className="login-top-bar" title={title} />}
+      </FormattedMessage>
     );
   }
 }
-
-export default injectIntl(Header);

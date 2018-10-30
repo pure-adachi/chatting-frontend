@@ -1,5 +1,10 @@
 @import "./bootrstap/bootstrap";
 
+.wrapper-component,
+.container-fluid {
+  height: 100%;
+}
+
 .container-fluid {
   padding-top: 64px;
 }

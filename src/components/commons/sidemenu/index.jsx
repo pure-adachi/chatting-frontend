@@ -5,7 +5,7 @@ import { withRouter } from "react-router";
 
 class Sidemunu extends Component {
   render() {
-    const urls = ["frends", "talks"];
+    const urls = ["friends", "talkRooms"];
 
     return (
       <nav className="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
@@ -13,14 +13,14 @@ class Sidemunu extends Component {
           {urls.map((url, i) => {
             return (
               <li key={i}>
-                {this.props.match.path.indexOf(url) === 0 ? (
+                {this.props.match.path.indexOf(`/${url}`) === 0 ? (
                   <span className="nav-link active">
                     <FormattedMessage
                       id={`components.commons.sidemenu.${url}`}
                     />
                   </span>
                 ) : (
-                  <Link to={url} className="nav-link">
+                  <Link to={`/${url}`} className="nav-link">
                     <FormattedMessage
                       id={`components.commons.sidemenu.${url}`}
                     />
