@@ -29,6 +29,16 @@ class Sidemunu extends Component {
               </li>
             );
           })}
+
+          <li>
+            <Link
+              to="/login"
+              className="nav-link"
+              onClick={() => localStorage.setItem("accessToken", "")}
+            >
+              <FormattedMessage id="components.commons.sidemenu.logout" />
+            </Link>
+          </li>
         </ul>
       </nav>
     );

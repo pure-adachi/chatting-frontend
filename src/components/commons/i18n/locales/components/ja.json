@@ -8,7 +8,8 @@
       },
       "sidemenu": {
         "friends": "友達",
-        "talkRooms": "トーク"
+        "talkRooms": "トーク",
+        "logout": "ログアウト"
       }
     },
     "login": {

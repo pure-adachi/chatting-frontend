@@ -6,12 +6,14 @@ import { withRouter } from "react-router";
 import TextField, { Input } from "@material/react-text-field";
 import Button from "@material/react-button";
 import Loading from "../../../commons/loading";
+import Cable from "../../../commons/cable";
 
 class ChatBody extends Component {
   constructor(props) {
     super(props);
 
     this.sendMessage = this.sendMessage.bind(this);
+    this.updateBody = this.updateBody.bind(this);
 
     this.state = {
       input: {
@@ -38,9 +40,13 @@ class ChatBody extends Component {
           body: this.state.input.body
         }
       });
-      // this.props.refetch();
       this.inputChange(null);
+      // this.props.refetch();
     }
+  }
+
+  updateBody() {
+    this.props.refetch();
   }
 
   render() {
@@ -60,6 +66,7 @@ class ChatBody extends Component {
 
     return (
       <div>
+        <Cable receivedAction={this.updateBody} />
         {this.props.loading && <Loading />}
         <div className="direct-chat-messages direct-chat-warning">
           {this.props.room.messages.edges.map((message, i) => {
