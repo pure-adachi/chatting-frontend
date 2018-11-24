@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
-import { withRouter } from "react-router";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { usersQuery } from "./usersQuery";
-import Button from "@material/react-button";
 import Loading from "../../commons/loading";
+import TalkBtn from "./talk-btn";
 
-class List extends Component {
+export default class List extends Component {
   render() {
     let context = {
       headers: {
@@ -41,23 +40,7 @@ class List extends Component {
                               />
                             </td>
                             <td>
-                              <FormattedMessage id="components.friend.list.talk">
-                                {text => (
-                                  <Button
-                                    className="auto btn-primary"
-                                    raised={true}
-                                    onClick={() =>
-                                      user.talkRoom
-                                        ? this.props.history.push(
-                                            `/talkRooms/${user.talkRoom.id}`
-                                          )
-                                        : console.log("nothing talk room")
-                                    }
-                                  >
-                                    {text}
-                                  </Button>
-                                )}
-                              </FormattedMessage>
+                              <TalkBtn user={user} />
                             </td>
                           </tr>
                         );
@@ -73,5 +56,3 @@ class List extends Component {
     );
   }
 }
-
-export default withRouter(List);

@@ -114,7 +114,7 @@ class ChatBody extends Component {
                 )}
               </FormattedMessage>
               <Mutation mutation={gqlMutation} context={context}>
-                {(action, { loading, data }) => {
+                {(action, { loading }) => {
                   return (
                     <div>
                       <Loading active={loading} />

@@ -34,7 +34,7 @@ class Sidemunu extends Component {
             <Link
               to="/login"
               className="nav-link"
-              onClick={() => localStorage.setItem("accessToken", "")}
+              onClick={() => localStorage.removeItem("accessToken")}
             >
               <FormattedMessage id="components.commons.sidemenu.logout" />
             </Link>

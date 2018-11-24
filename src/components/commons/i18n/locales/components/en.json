@@ -26,7 +26,11 @@
       "title": "Friend",
       "list": {
         "fullname": "{mei} {sei}",
-        "talk": "Talk"
+        "talk-btn": {
+          "fullname": "{mei} {sei}",
+          "talk": "Talk",
+          "confirmCreateTalkRoom": "Would you like to create a talk room with {name} ?"
+        }
       }
     },
     "talk-room": {

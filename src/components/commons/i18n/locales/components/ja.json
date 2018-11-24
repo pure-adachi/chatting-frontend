@@ -26,7 +26,11 @@
       "title": "友達",
       "list": {
         "fullname": "{sei} {mei}",
-        "talk": "トーク"
+        "talk-btn": {
+          "fullname": "{sei} {mei}",
+          "talk": "トーク",
+          "confirmCreateTalkRoom": "{name} とのトークルームを作成しますか?"
+        }
       }
     },
     "talk-room": {
