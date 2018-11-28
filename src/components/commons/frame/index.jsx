@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { addLocaleData, IntlProvider } from "react-intl";
-import { ToastContainer } from "react-toastify";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 import jaLocaleData from "react-intl/locale-data/ja";
 import enLocaleData from "react-intl/locale-data/en";
 import { ja } from "../i18n/ja";
 import { en } from "../i18n/en";
 import Header from "./header";
+import { viewerQuery } from "./viewerQuery";
+import Loading from "../loading";
+import UserChannelCable from "../user-channel-cable";
 
 addLocaleData([...jaLocaleData, ...enLocaleData]);
 
@@ -29,13 +33,35 @@ export default class Frame extends Component {
       messages: this.state.messages[language]
     };
 
+    let context = {
+      headers: {
+        authorization: localStorage.getItem("accessToken")
+      }
+    };
+
+    const gqlQuery = gql`
+      query {
+        ${viewerQuery}
+      }
+    `;
+
     return (
       <IntlProvider {...config}>
-        <div className="wrapper-component">
-          <ToastContainer />
-          {this.props.header || <Header />}
-          {this.props.children}
-        </div>
+        <Query query={gqlQuery} context={context} fetchPolicy="network-only">
+          {({ loading, data }) => {
+            if (loading) return <Loading />;
+            if (data) {
+              return (
+                <UserChannelCable
+                  isLogged={!!data.viewer}
+                  header={this.props.header || <Header />}
+                >
+                  {this.props.children}
+                </UserChannelCable>
+              );
+            }
+          }}
+        </Query>
       </IntlProvider>
     );
   }
