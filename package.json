@@ -2,6 +2,10 @@
   "name": "chatting-frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "3.10.10",
+    "node": "v8.11.3"
+  },
   "dependencies": {
     "@material/react-button": "^0.4.2",
     "@material/react-material-icon": "^0.6.1",
