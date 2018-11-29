@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { addLocaleData, IntlProvider } from "react-intl";
 import { Query } from "react-apollo";
-import gql from "graphql-tag";
 import jaLocaleData from "react-intl/locale-data/ja";
 import enLocaleData from "react-intl/locale-data/en";
 import { ja } from "../i18n/ja";
@@ -10,6 +9,7 @@ import Header from "./header";
 import { viewerQuery } from "./viewerQuery";
 import Loading from "../loading";
 import UserChannelCable from "../user-channel-cable";
+import { context } from "../../commons/context";
 
 addLocaleData([...jaLocaleData, ...enLocaleData]);
 
@@ -33,21 +33,13 @@ export default class Frame extends Component {
       messages: this.state.messages[language]
     };
 
-    let context = {
-      headers: {
-        authorization: localStorage.getItem("accessToken")
-      }
-    };
-
-    const gqlQuery = gql`
-      query {
-        ${viewerQuery}
-      }
-    `;
-
     return (
       <IntlProvider {...config}>
-        <Query query={gqlQuery} context={context} fetchPolicy="network-only">
+        <Query
+          query={viewerQuery}
+          context={context()}
+          fetchPolicy="network-only"
+        >
           {({ loading, data }) => {
             if (loading) return <Loading />;
             if (data) {

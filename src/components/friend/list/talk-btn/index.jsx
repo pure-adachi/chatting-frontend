@@ -1,33 +1,21 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 import Button from "@material/react-button";
+import { createMessageMutation } from "./createTalkRoomMutation";
+import { context } from "../../../commons/context";
 
 class TalkBtn extends Component {
-  createTalkRoom(userId) {
-    console.log(userId);
-  }
-
   render() {
-    let context = {
-      headers: {
-        authorization: localStorage.getItem("accessToken")
-      }
-    };
-
-    const gqlMutation = gql`
-      mutation createTalkRoom($userId: ID!) {
-        createTalkRoom(input: { userId: $userId }) {
-          result
-        }
-      }
-    `;
-
     return (
-      <Mutation mutation={gqlMutation} context={context}>
-        {(action, { loading }) => {
+      <Mutation mutation={createMessageMutation} context={context()}>
+        {(action, { loading, data }) => {
+          if (data && data.createTalkRoom && data.createTalkRoom) {
+            return (
+              <Redirect to={`/talkRooms/${data.createTalkRoom.talkRoom.id}`} />
+            );
+          }
           return (
             <FormattedMessage
               id="components.friend.list.talk-btn.fullname"
@@ -51,12 +39,12 @@ class TalkBtn extends Component {
                                   `/talkRooms/${this.props.user.talkRoom.id}`
                                 )
                               : window.confirm(confirmMsg)
-                                ? action({
-                                    variables: {
-                                      userId: this.props.user.id
-                                    }
-                                  })
-                                : null
+                              ? action({
+                                  variables: {
+                                    userId: this.props.user.id
+                                  }
+                                })
+                              : null
                           }
                         >
                           {text}

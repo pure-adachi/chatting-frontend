@@ -3,12 +3,13 @@ import { FormattedMessage } from "react-intl";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
 import { withRouter } from "react-router";
 import TextField, { Input } from "@material/react-text-field";
 import Button from "@material/react-button";
 import Loading from "../../../commons/loading";
 import * as RootActions from "../../../../actions";
+import { createMessageMutation } from "./createMessageMutation";
+import { context } from "../../../commons/context";
 
 class ChatBody extends Component {
   constructor(props) {
@@ -52,20 +53,6 @@ class ChatBody extends Component {
   }
 
   render() {
-    let context = {
-      headers: {
-        authorization: localStorage.getItem("accessToken")
-      }
-    };
-
-    const gqlMutation = gql`
-      mutation createMessage($talkRoomId: ID!, $body: String!) {
-        createMessage(input: { talkRoomId: $talkRoomId, body: $body }) {
-          result
-        }
-      }
-    `;
-
     return (
       <div>
         {this.props.loading && <Loading />}
@@ -95,7 +82,7 @@ class ChatBody extends Component {
                     時間
                   </span>
                 </div>
-                <img className="direct-chat-img" />
+                <img className="direct-chat-img" alt={message.node.body} />
                 <div className="direct-chat-text">{message.node.body}</div>
               </div>
             );
@@ -114,7 +101,7 @@ class ChatBody extends Component {
                   </TextField>
                 )}
               </FormattedMessage>
-              <Mutation mutation={gqlMutation} context={context}>
+              <Mutation mutation={createMessageMutation} context={context()}>
                 {(action, { loading }) => {
                   return (
                     <div>
