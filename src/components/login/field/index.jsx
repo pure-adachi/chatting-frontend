@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { FormattedMessage, injectIntl } from "react-intl";
 import { Query, Mutation } from "react-apollo";
-import gql from "graphql-tag";
 import TextField, { HelperText, Input } from "@material/react-text-field";
 import Button from "@material/react-button";
 import { Redirect } from "react-router";
 import Loading from "../../commons/loading";
+import { viewerQuery } from "./viewerQuery";
+import { loginMutation } from "./loginMutation";
+import { context } from "../../commons/context";
 
 class Field extends Component {
   constructor(props) {
@@ -70,45 +72,15 @@ class Field extends Component {
   }
 
   render() {
-    let context = {
-      headers: {
-        authorization: localStorage.getItem("accessToken")
-      }
-    };
-
-    const gqlQuery = gql`
-      query {
-        viewer {
-          id
-        }
-      }
-    `;
-
-    const gqlMutation = gql`
-      mutation login($loginid: String!, $password: String!) {
-        login(input: { loginid: $loginid, password: $password }) {
-          user {
-            id
-            latestAcessToken
-            errors {
-              keys
-              field
-            }
-          }
-          result
-        }
-      }
-    `;
-
     return (
       <div className="mdc-top-app-bar--fixed-adjust signin-component">
         {
-          <Query query={gqlQuery} context={context}>
+          <Query query={viewerQuery} context={context()}>
             {({ loading: queryLoading, data: queryData }) => {
               if (queryLoading) return <Loading />;
               if (queryData.viewer) return <Redirect to="/" />;
               return (
-                <Mutation mutation={gqlMutation}>
+                <Mutation mutation={loginMutation}>
                   {(action, { loading: mutateLoading, data: mutateData }) => {
                     if (
                       !mutateLoading &&
@@ -119,16 +91,7 @@ class Field extends Component {
                         "accessToken",
                         mutateData.login.user.latestAcessToken
                       );
-                      return (
-                        <Redirect
-                          to={{
-                            pathname: "/",
-                            state: {
-                              token: mutateData.login.user.latestAcessToken
-                            }
-                          }}
-                        />
-                      );
+                      return <Redirect to={"/"} />;
                     } else {
                       return (
                         <div className="form-signin">
