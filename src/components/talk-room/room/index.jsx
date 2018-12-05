@@ -8,27 +8,24 @@ import { context } from "../../commons/context";
 
 class Room extends Component {
   render() {
+    const query = talkRoomQuery({
+      id: this.props.match.params.id
+    });
+
     return (
-      <section className="row text-center placeholders">
-        <div className="table-responsive mx-2">
-          <Query
-            query={talkRoomQuery(this.props.match.params.id)}
-            context={context()}
-            notifyOnNetworkStatusChange
-          >
-            {({ loading, data, refetch }) => {
-              if (Object.keys(data).length === 0) return <Loading />;
-              return (
-                <ChatBody
-                  room={data.node}
-                  refetch={() => refetch()}
-                  loading={loading}
-                />
-              );
-            }}
-          </Query>
-        </div>
-      </section>
+      <Query query={query} context={context()}>
+        {({ loading, data, refetch }) => {
+          if (Object.keys(data).length === 0) return <Loading />;
+          return (
+            <ChatBody
+              key={new Date()}
+              room={data.node}
+              refetch={refetch}
+              loading={loading}
+            />
+          );
+        }}
+      </Query>
     );
   }
 }

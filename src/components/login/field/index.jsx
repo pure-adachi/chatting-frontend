@@ -48,7 +48,7 @@ class Field extends Component {
 
     if (key === "base") {
       return (
-        <div>
+        <div className="text-danger mb-3">
           {messages.keys.map((k, i) => {
             return <FormattedMessage key={i} id={`errors.${k}`} />;
           })}
@@ -56,7 +56,7 @@ class Field extends Component {
       );
     } else {
       return (
-        <div>
+        <div className="text-danger mb-3">
           {messages.keys.map((k, i) => {
             return (
               <span key={i}>
@@ -73,7 +73,7 @@ class Field extends Component {
 
   render() {
     return (
-      <div className="mdc-top-app-bar--fixed-adjust signin-component">
+      <div className="col-md-12 signin-component">
         {
           <Query query={viewerQuery} context={context()}>
             {({ loading: queryLoading, data: queryData }) => {
@@ -99,13 +99,15 @@ class Field extends Component {
                             <Loading active={mutateLoading} />
                             <FormattedMessage id="components.login.field.title" />
                           </h1>
-                          <div>
+                          {this.errorMessages(
+                            mutateData ? mutateData.login.user.errors : [],
+                            "base"
+                          )}
+                          <div className="mb-3">
                             {this.errorMessages(
                               mutateData ? mutateData.login.user.errors : [],
-                              "base"
+                              "loginid"
                             )}
-                          </div>
-                          <div>
                             <TextField
                               outlined={true}
                               label={this.props.intl.formatMessage({
@@ -139,12 +141,12 @@ class Field extends Component {
                                 }}
                               />
                             </TextField>
-                            {this.errorMessages(
-                              mutateData ? mutateData.login.user.errors : [],
-                              "loginid"
-                            )}
                           </div>
                           <div>
+                            {this.errorMessages(
+                              mutateData ? mutateData.login.user.errors : [],
+                              "password"
+                            )}
                             <TextField
                               outlined={true}
                               label={this.props.intl.formatMessage({
@@ -178,14 +180,11 @@ class Field extends Component {
                                 }
                               />
                             </TextField>
-                            {this.errorMessages(
-                              mutateData ? mutateData.login.user.errors : [],
-                              "password"
-                            )}
                           </div>
                           <Button
-                            className="auto btn-primary"
+                            className="auto bg-dark btn-block"
                             raised={true}
+                            disabled={mutateLoading}
                             onClick={() =>
                               action({ variables: this.state.input })
                             }

@@ -23,7 +23,6 @@ class UserChannelCable extends Component {
       <div className="wrapper-component">
         {this.props.isLogged && <meta name="action-cable-url" />}
         <ToastContainer />
-        {this.props.header}
         {this.props.children}
       </div>
     );

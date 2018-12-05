@@ -7,6 +7,7 @@ import { createStore } from "redux";
 import rootReducer from "../reducers";
 import "url-polyfill";
 import "../styles/App.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 const url = new URL("graphql", process.env.REACT_APP_SERVER_URL);
 const client = new ApolloClient({ uri: url });

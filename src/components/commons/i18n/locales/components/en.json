@@ -3,13 +3,22 @@
     "commons": {
       "frame": {
         "header": {
-          "title": "Chatting"
+          "title": "Chatting",
+          "fullname": "{mei} {sei}",
+          "options": "Options"
+        },
+        "FriendList": {
+          "createTalkRoom": "Create Talk Room",
+          "friends": "Friend",
+          "Friend": {
+            "fullname": "{mei} {sei}"
+          }
         }
       },
       "sidemenu": {
-        "friends": "友達",
-        "talkRooms": "トーク",
-        "logout": "ログアウト"
+        "friends": "Friend",
+        "talkRooms": "Talk Room",
+        "logout": "Sign Out"
       }
     },
     "login": {
