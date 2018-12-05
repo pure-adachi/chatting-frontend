@@ -1,5 +1,5 @@
-import common from "../locales/ja.json";
-import components from "../locales/components/ja.json";
+import common from "../locales/ja";
+import components from "../locales/components/ja";
 import flatten from "flat";
 
 export const ja = (() => {
