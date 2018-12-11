@@ -1,13 +1,22 @@
 import gql from "graphql-tag";
 
-export function talkRoomQuery(id) {
+export function talkRoomQuery(queryOpt) {
   return gql`
     query {
-      node(id: "${id}") {
+      node(id: "${queryOpt.id}") {
         id
         ... on TalkRoom {
           id
-          messages {
+          messages
+          ${
+            queryOpt.first || queryOpt.after
+              ? `
+            (
+              ${queryOpt.first ? `first: "${queryOpt.first}"` : ""}
+              ${queryOpt.after ? `after: "${queryOpt.after}"` : ""}
+            )`
+              : ""
+          } {
             edges {
               node {
                 body

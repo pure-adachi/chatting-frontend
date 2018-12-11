@@ -2,7 +2,11 @@
   "default": {
     "requiredMark": "*",
     "processing": "Processing...",
-    "logged": "Logged"
+    "logged": "Logged",
+    "languages": {
+      "ja": "日本語",
+      "en": "English"
+    }
   },
   "errors": {
     "unauthorized": "Is Unauthorized",

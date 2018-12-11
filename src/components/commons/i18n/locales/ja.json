@@ -2,7 +2,11 @@
   "default": {
     "requiredMark": "*",
     "processing": "処理中...",
-    "logged": "ログインしました。"
+    "logged": "ログインしました。",
+    "languages": {
+      "ja": "日本語",
+      "en": "English"
+    }
   },
   "errors": {
     "unauthorized": "ログイン情報が不正です。",

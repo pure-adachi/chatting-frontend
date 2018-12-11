@@ -14,7 +14,7 @@ class Sidemunu extends Component {
             return (
               <li key={i}>
                 {this.props.match.path.indexOf(`/${url}`) === 0 ? (
-                  <span className="nav-link active">
+                  <span className="nav-link">
                     <FormattedMessage
                       id={`components.commons.sidemenu.${url}`}
                     />
