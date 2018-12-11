@@ -145,6 +145,8 @@ main {
         a {
           color: #b8c7ce;
           padding: 12px 5px 12px 15px;
+          text-overflow: ellipsis;
+          overflow-x: hidden;
 
           &:hover {
             color: #fff;
@@ -154,6 +156,11 @@ main {
 
         a {
           display: block;
+        }
+
+        .avatar {
+          height: 16px;
+          margin-right: 5px;
         }
 
         &:hover,
@@ -281,6 +288,13 @@ main {
   margin: 8px 0 0;
 }
 
+.user-name {
+  color: #747474;
+  display: block;
+  font-size: 12px;
+  margin: 0 0 8px 0;
+}
+
 .received_msg p,
 .sent_msg p {
   textarea {
@@ -290,5 +304,10 @@ main {
     padding: 0;
     border: 0;
     color: inherit;
+    outline: 0;
   }
+}
+
+.new-group-user-list {
+  min-height: 250px;
 }

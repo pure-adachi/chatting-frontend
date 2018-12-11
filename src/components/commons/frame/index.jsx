@@ -23,7 +23,9 @@ import Loading from "../loading";
 import UserChannelCable from "../user-channel-cable";
 import { context } from "../../commons/context";
 import ChattingIcon from "../../commons/ChattingIcon";
+import TalkRoomList from "./TalkRoomList";
 import FriendList from "./FriendList";
+import CustomScrollbars from "../../commons/CustomScrollbars";
 
 addLocaleData([...jaLocaleData, ...enLocaleData]);
 
@@ -94,9 +96,9 @@ export default class Frame extends Component {
                     )}
 
                     {data.viewer && (
-                      <Nav className="ml-auto" navbar>
+                      <Nav className="ml-auto flex-row" navbar>
                         <NavItem>
-                          <NavLink className="text-white">
+                          <NavLink className="text-white p-2">
                             <FormattedMessage
                               id="components.commons.frame.header.fullname"
                               values={{
@@ -110,7 +112,7 @@ export default class Frame extends Component {
                           <DropdownToggle nav caret className="text-white">
                             <FormattedMessage id="components.commons.frame.header.options" />
                           </DropdownToggle>
-                          <DropdownMenu right>
+                          <DropdownMenu right className="position-absolute">
                             <DropdownItem>
                               <FormattedMessage
                                 id="components.commons.frame.header.fullname"
@@ -155,7 +157,16 @@ export default class Frame extends Component {
                           isOpen={this.state.isOpen}
                           className="p-0 col-sm-3 col-md-2 sidebar"
                         >
-                          <FriendList />
+                          <CustomScrollbars
+                            renderViewClassName="p-0"
+                            renderTrackVerticalStyle={{ width: "6px" }}
+                            renderThumbVerticalStyle={{
+                              backgroundColor: "rgba(236, 238, 241, 0.5)"
+                            }}
+                          >
+                            <TalkRoomList />
+                            <FriendList />
+                          </CustomScrollbars>
                         </Collapse>
                       )}
                       <main
@@ -165,7 +176,15 @@ export default class Frame extends Component {
                             : "col-md-12"
                         }`}
                       >
-                        {this.props.children}
+                        <CustomScrollbars
+                          renderViewClassName="p-0"
+                          renderTrackVerticalStyle={{ width: "6px" }}
+                          renderThumbVerticalStyle={{
+                            backgroundColor: "rgba(54, 57, 71, 0.5)"
+                          }}
+                        >
+                          {this.props.children}
+                        </CustomScrollbars>
                       </main>
                     </div>
                   </div>

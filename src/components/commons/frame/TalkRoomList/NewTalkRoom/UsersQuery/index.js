@@ -6,10 +6,6 @@ export const usersQuery = gql`
       id
       sei
       mei
-      avatar
-      talkRoom {
-        id
-      }
     }
   }
 `;

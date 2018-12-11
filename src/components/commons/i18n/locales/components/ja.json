@@ -8,10 +8,21 @@
           "options": "Options"
         },
         "FriendList": {
-          "createTalkRoom": "トークルーム作成",
           "friends": "友達",
           "Friend": {
             "fullname": "{sei} {mei}"
+          }
+        },
+        "TalkRoomList": {
+          "createTalkRoom": "トークルーム作成",
+          "groups": "グループ",
+          "NewTalkRoom": {
+            "createTalkRoom": "トークルーム作成",
+            "saveTalkRoom": "作成",
+            "cancel": "キャンセル",
+            "title": "タイトル",
+            "fullname": "{sei} {mei}",
+            "inputRequired": "入力必須です。"
           }
         }
       },
@@ -47,7 +58,9 @@
       "room": {
         "chat-body": {
           "sendMessage": "送信",
-          "inputMessage": "メッセージを入力"
+          "inputMessage": "メッセージを入力",
+          "members": "メンバー",
+          "fullname": "{sei} {mei}"
         }
       }
     }

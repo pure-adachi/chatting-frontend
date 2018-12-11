@@ -8,10 +8,21 @@
           "options": "Options"
         },
         "FriendList": {
-          "createTalkRoom": "Create Talk Room",
           "friends": "Friend",
           "Friend": {
             "fullname": "{mei} {sei}"
+          }
+        },
+        "TalkRoomList": {
+          "createTalkRoom": "Create Talk Room",
+          "groups": "Group List",
+          "NewTalkRoom": {
+            "createTalkRoom": "Create Talk Room",
+            "saveTalkRoom": "Save",
+            "cancel": "Cancel",
+            "title": "Title",
+            "fullname": "{mei} {sei}",
+            "inputRequired": "Input Required"
           }
         }
       },
@@ -47,7 +58,9 @@
       "room": {
         "chat-body": {
           "sendMessage": "Send Message",
-          "inputMessage": "Input Message"
+          "inputMessage": "Input Message",
+          "members": "Member",
+          "fullname": "{mei} {sei}"
         }
       }
     }

@@ -7,6 +7,16 @@ export function talkRoomQuery(queryOpt) {
         id
         ... on TalkRoom {
           id
+          title
+          group
+          users {
+            edges {
+              node {
+                sei
+                mei
+              }
+            }
+          }
           messages
           ${
             queryOpt.first || queryOpt.after
@@ -21,10 +31,12 @@ export function talkRoomQuery(queryOpt) {
               node {
                 body
                 ownTalk
+                createdAt
                 user {
                   id
                   sei
                   mei
+                  avatar
                 }
               }
             }
