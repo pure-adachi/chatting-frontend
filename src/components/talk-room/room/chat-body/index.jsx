@@ -1,10 +1,20 @@
 import React, { Component } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, injectIntl } from "react-intl";
+import Moment from "react-moment";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Mutation } from "react-apollo";
 import { withRouter } from "react-router";
 import TextareaAutosize from "react-autosize-textarea";
+import {
+  Navbar,
+  Nav,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 import Loading from "../../../commons/loading";
 import * as RootActions from "../../../../actions";
 import { createMessageMutation } from "./createMessageMutation";
@@ -64,7 +74,40 @@ class ChatBody extends Component {
     return (
       <div className="chat">
         <div className="chat-header">
-          <FormattedMessage id="components.talk-room.title" />
+          <Navbar expand="md" className="navbar-inverse py-0 h-100">
+            <Nav navbar>
+              <NavItem>
+                {this.props.room.group ? (
+                  this.props.room.title
+                ) : (
+                  <FormattedMessage id="components.talk-room.title" />
+                )}
+              </NavItem>
+            </Nav>
+
+            <Nav className="ml-auto" navbar>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret className="text-secondary">
+                  <FormattedMessage id="components.talk-room.room.chat-body.members" />
+                </DropdownToggle>
+                <DropdownMenu right className="position-absolute">
+                  {this.props.room.users.edges.map((user, i) => {
+                    return (
+                      <DropdownItem key={i}>
+                        <FormattedMessage
+                          id="components.talk-room.room.chat-body.fullname"
+                          values={{
+                            sei: user.node.sei,
+                            mei: user.node.mei
+                          }}
+                        />
+                      </DropdownItem>
+                    );
+                  })}
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Navbar>
         </div>
 
         {this.props.loading && <Loading />}
@@ -82,10 +125,7 @@ class ChatBody extends Component {
               >
                 {!message.node.ownTalk && (
                   <div className="incoming_msg_img">
-                    <img
-                      src="https://ptetutorials.com/images/user-profile.png"
-                      alt="sunil"
-                    />
+                    <img src={message.node.user.avatar} alt="avatar" />
                   </div>
                 )}
 
@@ -94,10 +134,27 @@ class ChatBody extends Component {
                     message.node.ownTalk ? "sent_msg" : "received_msg"
                   }`}
                 >
+                  {!message.node.ownTalk && (
+                    <span className="user-name">
+                      <FormattedMessage
+                        id="components.talk-room.room.chat-body.fullname"
+                        values={{
+                          sei: message.node.user.sei,
+                          mei: message.node.user.mei
+                        }}
+                      />
+                    </span>
+                  )}
                   <p>
                     <TextareaAutosize value={message.node.body} readOnly />
                   </p>
-                  <span className="time_date">11:01 AM | June 9</span>
+                  <Moment
+                    className="time_date"
+                    fromNow
+                    locale={this.props.intl.locale}
+                  >
+                    {message.node.createdAt}
+                  </Moment>
                 </div>
               </div>
             );
@@ -142,4 +199,4 @@ export default connect(
       actions: bindActionCreators(RootActions, dispatch)
     };
   }
-)(withRouter(ChatBody));
+)(withRouter(injectIntl(ChatBody)));

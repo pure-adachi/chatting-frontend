@@ -27,7 +27,6 @@ export default class Header extends Component {
   }
 
   toggleNavbar() {
-    console.log("toggle", !this.state.isOpen);
     this.setState({ isOpen: !this.state.isOpen });
   }
 

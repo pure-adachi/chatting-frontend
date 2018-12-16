@@ -9,7 +9,7 @@ class Friend extends Component {
   render() {
     return (
       <Mutation mutation={createMessageMutation} context={context()}>
-        {(action, { loading, data }) => {
+        {(action, { data }) => {
           if (data && data.createTalkRoom && data.createTalkRoom) {
             return (
               <Redirect to={`/talkRooms/${data.createTalkRoom.talkRoom.id}`} />
@@ -35,12 +35,18 @@ class Friend extends Component {
                           : window.confirm(confirmMsg)
                           ? action({
                               variables: {
-                                userId: this.props.user.id
+                                userIds: [this.props.user.id]
                               }
                             })
                           : null
                       }
                     >
+                      <img
+                        className="avatar"
+                        src={this.props.user.avatar}
+                        alt="avatar"
+                      />
+
                       <FormattedMessage
                         id="components.commons.frame.FriendList.Friend.fullname"
                         values={{

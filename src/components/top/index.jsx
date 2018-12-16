@@ -11,7 +11,7 @@ export default class Top extends Component {
           <section>
             <h1>Dashboard</h1>
 
-            <section className="row text-center placeholders">
+            <section className="row text-center placeholders col-md-12">
               <div className="col-6 col-sm-3 placeholder">
                 <ChattingIcon width="200" height="200" />
                 <h4>Label</h4>

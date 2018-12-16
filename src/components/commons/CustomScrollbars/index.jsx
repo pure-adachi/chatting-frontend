@@ -3,44 +3,64 @@ import { Scrollbars } from "react-custom-scrollbars";
 
 class CustomScrollbars extends Component {
   render() {
-    const { ...scrollProps } = this.props;
+    const {
+      renderViewClassName,
+      renderTrackVerticalClassName,
+      renderThumbVerticalClassName,
+      renderViewStyle,
+      renderTrackVerticalStyle,
+      renderThumbVerticalStyle,
+      ...scrollProps
+    } = this.props;
 
     return (
       <Scrollbars
         renderView={props => (
           <div
+            className={renderViewClassName}
             {...{
               ...props,
               style: {
-                ...props.style,
-                padding: "30px 15px 0 25px"
+                ...{
+                  ...props.style,
+                  padding: "30px 15px 0 25px"
+                },
+                ...renderViewStyle
               }
             }}
           />
         )}
         renderTrackVertical={props => (
           <div
+            className={renderTrackVerticalClassName}
             {...{
               ...props,
               style: {
-                ...props.style,
-                width: "12px",
-                right: "2px",
-                bottom: "2px",
-                top: "2px"
+                ...{
+                  ...props.style,
+                  width: "12px",
+                  right: "2px",
+                  bottom: "2px",
+                  top: "2px"
+                },
+                ...renderTrackVerticalStyle
               }
             }}
           />
         )}
         renderThumbVertical={props => (
           <div
+            className={renderThumbVerticalClassName}
             {...{
               ...props,
               style: {
-                ...props.style,
-                backgroundColor: "rgba(5, 114, 143, 0.5)",
-                borderRadius: "6px",
-                height: "210px"
+                ...{
+                  ...props.style,
+                  backgroundColor: "rgba(5, 114, 143, 0.5)",
+                  borderRadius: "6px",
+                  height: "210px"
+                },
+                ...renderThumbVerticalStyle
               }
             }}
           />
@@ -56,7 +76,13 @@ class CustomScrollbars extends Component {
 
 CustomScrollbars.defaultProps = {
   autoHide: true,
-  autoHideDuration: 1000
+  autoHideDuration: 1000,
+  renderViewClassName: "",
+  renderTrackVerticalClassName: "",
+  renderThumbVerticalClassName: "",
+  renderViewStyle: {},
+  renderTrackVerticalStyle: {},
+  renderThumbVerticalStyle: {}
 };
 
 export default CustomScrollbars;
