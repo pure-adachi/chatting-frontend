@@ -81,7 +81,6 @@ export default class Frame extends Component {
                   >
                     <NavbarBrand href="/" className="text-white">
                       <ChattingIcon />
-                      <FormattedMessage id="components.commons.frame.header.title" />
                     </NavbarBrand>
 
                     {data.viewer && (
