@@ -307,11 +307,9 @@ main {
   }
 }
 
-.new-group-user-list {
-  min-height: 250px;
-}
-
 .checkbox {
+  height: 100%;
+
   [type="checkbox"]:not(:checked),
   [type="checkbox"]:checked {
     position: absolute;
@@ -417,5 +415,38 @@ main {
   .copy a {
     text-decoration: none;
     color: #4778d9;
+  }
+}
+
+.modal.modal-overlay {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+
+  .modal-dialog {
+    height: 100%;
+    margin: auto;
+    padding: 0.5rem;
+
+    .modal-content {
+      height: 100%;
+    }
+  }
+}
+
+.new-talk-room-form{
+  .talk-room-title {
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .talk-room-users {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }
